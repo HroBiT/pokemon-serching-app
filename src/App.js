@@ -5,6 +5,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [showShiny, setShowShiny] = useState(false);
   const [pokemonData, setPokemonData] = useState([]);
+  const [allPokemon, setAllPokemon] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,6 +36,19 @@ function App() {
     setIsLoading(false);
   };
 
+  const fetchAllPokemon = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=20");
+      setAllPokemon(response.data.results);
+      setError(null);
+    } catch (error) {
+      console.error("Error fetching all Pokemon data:", error);
+      setError("Failed to get all Pokemon");
+    }
+    setIsLoading(false);
+  };
+
   useEffect(() => {
     if (searchTerm !== "") {
       handleSearch(searchTerm);
@@ -43,6 +57,14 @@ function App() {
       setError(null);
     }
   }, [searchTerm, showShiny]);
+
+  useEffect(() => {
+    fetchAllPokemon();
+  }, []);
+
+  const handlePokemonClick = async (pokemonName) => {
+    await handleSearch(pokemonName);
+  };
 
   const getPokemonLink = (pokemonName) => {
     const formattedName = pokemonName.toLowerCase().replace(" ", "-");
@@ -99,6 +121,27 @@ function App() {
           </div>
         ))}
       </div>
+      {allPokemon.length > 0 && (
+        <div className="w-full max-w-md">
+          <h2 className="text-2xl mb-2">a few Pokemon</h2>
+          <div className="flex flex-wrap justify-center">
+            {allPokemon.map((pokemon, index) => (
+              <div
+                key={index}
+                className="bg-gray-800 rounded-lg p-4 m-2 cursor-pointer"
+                onClick={() => handlePokemonClick(pokemon.name)}
+              >
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
+                  alt={pokemon.name}
+                  className="mx-auto mb-2"
+                />
+                <p className="text-center">{pokemon.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
