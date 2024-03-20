@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pokemon-serching-app/static/css/main.ecc7e412.css",
-    "main.js": "/pokemon-serching-app/static/js/main.34bcf5f0.js",
+    "main.css": "/pokemon-serching-app/static/css/main.27e65b4e.css",
+    "main.js": "/pokemon-serching-app/static/js/main.1af6825a.js",
     "static/js/453.4f8abdfe.chunk.js": "/pokemon-serching-app/static/js/453.4f8abdfe.chunk.js",
     "index.html": "/pokemon-serching-app/index.html",
-    "main.ecc7e412.css.map": "/pokemon-serching-app/static/css/main.ecc7e412.css.map",
-    "main.34bcf5f0.js.map": "/pokemon-serching-app/static/js/main.34bcf5f0.js.map",
+    "main.27e65b4e.css.map": "/pokemon-serching-app/static/css/main.27e65b4e.css.map",
+    "main.1af6825a.js.map": "/pokemon-serching-app/static/js/main.1af6825a.js.map",
     "453.4f8abdfe.chunk.js.map": "/pokemon-serching-app/static/js/453.4f8abdfe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ecc7e412.css",
-    "static/js/main.34bcf5f0.js"
+    "static/css/main.27e65b4e.css",
+    "static/js/main.1af6825a.js"
   ]
 }
